@@ -7,5 +7,7 @@
 - [ ] Navegation System
 - [ ] Caracters ( Player - NPCs - Enemies )
 - [ ] A Combat System ( Not defined yet )
+- [ ] Item System
 - [ ] Party System*
+- [ ] Audio
 - [ ] Skill Tree System*
