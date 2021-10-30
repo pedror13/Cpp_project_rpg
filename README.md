@@ -1,5 +1,5 @@
 # Cpp RPG
-## A old stylish RPG game implemented with SFML
+## A old stylish RPG game in C++ using SFML
 ### The project will have the following Main Contents implemented ( hopefully in that order )
 (*) contents that will be implemented if possible
 
