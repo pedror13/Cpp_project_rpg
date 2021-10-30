@@ -1,6 +1,6 @@
 # Cpp RPG
 ## A old stylish RPG game implemented with SFML
-### The project will have the following contents implemented ( hopefully in that order )
+### The project will have the following Main Contents implemented ( hopefully in that order )
 (*) contents that will be implemented if possible
 
 - [ ] Game's World
