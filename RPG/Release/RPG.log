@@ -1,0 +1,20 @@
+﻿  Button.cpp
+  Engine.cpp
+  Entity.cpp
+  GameInstance.cpp
+  Instance.cpp
+  PrimaryMenuInstance.cpp
+c:\users\pedro\source\repos\rpg\rpg\primarymenuinstance.cpp(45): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  RPG.cpp
+  Generating code
+  All 608 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  RPG.vcxproj -> C:\Users\pedro\source\repos\RPG\Release\RPG.exe

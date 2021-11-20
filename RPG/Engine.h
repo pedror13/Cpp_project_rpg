@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameInstance.h"
+#include "PrimaryMenuInstance.h"
 
 //Class that will work as the game engine
 class Engine
@@ -15,8 +15,12 @@ class Engine
 
 	  std::stack<Instance*> instances; // Will manage the instances
 
+	  std::map<std::string, int> supportedKeys;
+
 	  //Initializer Functions
+	  void initVariables();
 	  void initWindow();
+	  void initKeys();
 	  void initInstance();
 
   public:
@@ -26,10 +30,18 @@ class Engine
 
 
 	  //Functions
+
+	  void endApplication();
+
+	  ///Update
 	  void updateDt();
 	  void updateSFMLEvents();
 	  void update();
+
+	  ///Render
 	  void render();
+
+	  ///Core
 	  void run();
 };
 
