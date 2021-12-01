@@ -1,24 +1,35 @@
 #pragma once
 
-#include <iostream>
-#include <map>
-#include <vector>
-
-#include "SFML/Graphics.hpp"
-#include "SFML/System.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/Audio.hpp"
+#include "Instance.h"
 
 class Scenario
 {
-   private:
-	   std::map<std::string, sf::Texture> scenarioTexture;
+private:
+	//Variables
+	///Map variables
+	sf::RectangleShape shape;
+	sf::Texture scenarioTexture;
+	std::string key;
 
-   public:
+	///Objects variables
+	sf::RectangleShape* objects;
+	int numberObjs;
+	sf::Vector2f coordenates;
+	sf::Vector2f size;
 
-	   //Constructor & Distructor
-	   Scenario();
-	   ~Scenario();
+public:
 
+
+	//Constructor & Distructor
+	Scenario(float x, float y, float witdth, float height, sf::Texture* scenarioTexture, std::string key);
+	~Scenario();
+
+	//Functions
+	void initObjects();
+	sf::RectangleShape* getObjects();
+	int getNumObjs();
+
+	void updateCollision(Entity* entity);
+
+	void render(sf::RenderTarget* target);
 };
-

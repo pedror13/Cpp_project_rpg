@@ -26,18 +26,19 @@ private:
 	float acceleration;
 	float deceleration;
 
-	
+
 public:
-	
+
 	//Constructors & Destructors
-	PlayerMovement(sf::Sprite& sprite, float maxSpeed,float acceleration, float deceleration);
+	PlayerMovement(sf::Sprite& sprite, float maxSpeed, float acceleration, float deceleration);
 	virtual ~PlayerMovement();
 
 	//Functions
 	const bool idle() const;
 	const sf::Vector2f& getVelocity() const;
+
 	const short int getDirectionCharMov() const;
+	void FinishMovement();
 	void update(const float& dt);
 	void move(const float diretionX, const float directionY, const float& dt);
 };
-

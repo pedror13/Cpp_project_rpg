@@ -3,8 +3,8 @@
 /*
 ----------Constructors & Destructors----------
 */
-PlayerMovement::PlayerMovement(sf::Sprite& sprite, float maxSpeed ,
-	float acceleration, float deceleration) 
+PlayerMovement::PlayerMovement(sf::Sprite& sprite, float maxSpeed,
+	float acceleration, float deceleration)
 	: sprite(sprite), maxSpeed(maxSpeed), acceleration(acceleration), deceleration(deceleration)
 {
 
@@ -59,6 +59,13 @@ const short int PlayerMovement::getDirectionCharMov() const
 	{
 		return 4;
 	}
+	return 5;// ERROR
+}
+
+void PlayerMovement::FinishMovement()
+{
+	this->speed.x = 0.f;
+	this->speed.y = 0.f;
 }
 
 const sf::Vector2f & PlayerMovement::getVelocity() const

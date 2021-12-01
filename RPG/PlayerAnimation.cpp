@@ -22,7 +22,7 @@ PlayerAnimation::~PlayerAnimation()
 ----------Functions----------
 */
 
-void PlayerAnimation::addAnimation(const std::string key,float speed,
+void PlayerAnimation::addAnimation(const std::string key, float speed,
 	int startFrameX, int startFrameY, int framesX, int framesY, int width, int height)
 {
 	this->animations[key] = new Animation(this->sprite, this->textureSheet, speed, startFrameX, startFrameY, framesX, framesY, width, height);

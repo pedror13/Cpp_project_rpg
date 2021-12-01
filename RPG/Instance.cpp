@@ -22,7 +22,7 @@ Instance::~Instance()
 */
 
 const bool & Instance::getFinish() const
-{	
+{
 	/*Aux checkFinish()*/
 
 	return this->finish;
@@ -30,6 +30,7 @@ const bool & Instance::getFinish() const
 
 void Instance::endInstance()
 {
+
 	this->finish = true;
 }
 

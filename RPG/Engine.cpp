@@ -11,7 +11,7 @@
 */
 
 void Engine::initVariables()
-{ 
+{
 	this->window = nullptr;
 	this->dt = 0.f;
 }
@@ -23,12 +23,11 @@ void Engine::initWindow()
 	//Values by default
 	std::string title = "None";
 	sf::VideoMode WindowSize(600, 300);
-	sf::VideoMode::getFullscreenModes;
 	unsigned framerateMax = 120;
 	bool verticalSyncEnable = false;
 
 	std::ifstream ifs("Config/window.ini");
-	if(ifs.is_open())
+	if (ifs.is_open())
 	{
 		std::getline(ifs, title);
 		ifs >> WindowSize.width >> WindowSize.height;
@@ -50,9 +49,16 @@ void Engine::initKeys()
 	this->supportedKeys["Escape"] = sf::Keyboard::Key::Escape;
 	this->supportedKeys["A"] = sf::Keyboard::Key::A;
 	this->supportedKeys["D"] = sf::Keyboard::Key::D;
-	this->supportedKeys["W"]= sf::Keyboard::Key::W;
+	this->supportedKeys["W"] = sf::Keyboard::Key::W;
 	this->supportedKeys["S"] = sf::Keyboard::Key::S;
 
+	this->supportedKeys["Left_Arrow"] = sf::Keyboard::Key::Left;
+	this->supportedKeys["Right_Arrow"] = sf::Keyboard::Key::Right;
+	this->supportedKeys["Up_Arrow"] = sf::Keyboard::Key::Up;
+	this->supportedKeys["Down_Arrow"] = sf::Keyboard::Key::Down;
+
+	//this->supportedKeys["Z"] = sf::Keyboard::Key::Z;
+	//this->supportedKeys["X"] = sf::Keyboard::Key::X;
 }
 
 void Engine::initInstance()
@@ -99,7 +105,7 @@ void Engine::updateDt()
 
 	this->dt = this->dtClock.restart().asSeconds();
 	system("cls");
-	std::cout << "Frame rate : "<< this->dt << "\n";
+	std::cout << "Frame rate : " << this->dt << "\n";
 }
 
 void Engine::updateSFMLEvents()
@@ -120,8 +126,8 @@ void Engine::update()
 
 	if (!this->instances.empty())
 	{
-		this->instances.top()->update(this->dt); 
-	
+		this->instances.top()->update(this->dt);
+
 		if (this->instances.top()->getFinish()) // Deleting that given instance
 		{
 			/*Later save instances info before ereasing it
@@ -154,7 +160,7 @@ void Engine::render()
 
 void Engine::run()
 {
-	while(this->window->isOpen())
+	while (this->window->isOpen())
 	{
 		this->updateDt();
 		this->update();

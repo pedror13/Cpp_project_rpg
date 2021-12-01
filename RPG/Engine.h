@@ -5,43 +5,42 @@
 //Class that will work as the game engine
 class Engine
 {
-  private:
-      //Variables
-	  sf::RenderWindow* window;
-	  sf::Event sfmlEvent;
-	  sf::Clock dtClock;
+private:
+	//Variables
+	sf::RenderWindow* window;
+	sf::Event sfmlEvent;
+	sf::Clock dtClock;
 
-	  float dt; //Delta Time
+	float dt; //Delta Time
 
-	  std::stack<Instance*> instances; // Will manage the instances
+	std::stack<Instance*> instances; // Will manage the instances
 
-	  std::map<std::string, int> supportedKeys;
+	std::map<std::string, int> supportedKeys;
 
-	  //Initializer Functions
-	  void initVariables();
-	  void initWindow();
-	  void initKeys();
-	  void initInstance();
+	//Initializer Functions
+	void initVariables();
+	void initWindow();
+	void initKeys();
+	void initInstance();
 
-  public:
-	  //Constructors & Destructors
-	  Engine();
-	  virtual ~Engine();
+public:
+	//Constructors & Destructors
+	Engine();
+	virtual ~Engine();
 
 
-	  //Functions
+	//Functions
 
-	  void endApplication();
+	void endApplication();
 
-	  ///Update
-	  void updateDt();
-	  void updateSFMLEvents();
-	  void update();
+	///Update
+	void updateDt();
+	void updateSFMLEvents();
+	void update();
 
-	  ///Render
-	  void render();
+	///Render
+	void render();
 
-	  ///Core
-	  void run();
+	///Core
+	void run();
 };
-

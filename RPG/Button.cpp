@@ -14,7 +14,7 @@ Button::Button(float x, float y, float witdth, float height,
 	this->activeColor = activeColor;
 
 	this->shape.setPosition(sf::Vector2f(x, y));
-	this->shape.setSize(sf::Vector2f(witdth, height)); 
+	this->shape.setSize(sf::Vector2f(witdth, height));
 	this->shape.setTexture(buttonTexture);
 	this->font = font;
 
@@ -25,7 +25,7 @@ Button::Button(float x, float y, float witdth, float height,
 	this->text.setPosition(
 		this->shape.getPosition().x + (this->shape.getGlobalBounds().width / 2.f) - this->text.getGlobalBounds().width / 2.f,
 		this->shape.getPosition().y + (this->shape.getGlobalBounds().height / 2.f) - this->text.getGlobalBounds().height / 2.f
-		);
+	);
 
 }
 
@@ -39,11 +39,7 @@ Button::~Button()
 */
 const bool Button::isPressed() const
 {
-	if (this->pressed)
-	{
-		return true;
-	}
-	return false;
+	return this->pressed;
 }
 
 void Button::update(const sf::Vector2f mousePosition)
@@ -52,14 +48,14 @@ void Button::update(const sf::Vector2f mousePosition)
 	this->pressed = false;
 
 	//Hover
-	if (this->shape.getGlobalBounds().contains(mousePosition)) 
+	if (this->shape.getGlobalBounds().contains(mousePosition))
 	{
 		this->hover = true;
 
 		//Pressed
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			this->pressed = true; 
+			this->pressed = true;
 		}
 	}
 	if (pressed)
@@ -78,8 +74,9 @@ void Button::update(const sf::Vector2f mousePosition)
 
 }
 
-void Button::render(sf::RenderTarget * target)
+void Button::render(sf::RenderTarget& target)
 {
-	target->draw(this->shape);
-	target->draw(this->text);
+
+	target.draw(this->shape);
+	target.draw(this->text);
 }

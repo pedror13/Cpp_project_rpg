@@ -11,30 +11,30 @@
 
 class Button
 {
-  private:
-	  //Variables
-	  bool pressed;
-	  bool hover;
+private:
+	//Variables
+	bool pressed;
+	bool hover;
 
-	  sf::RectangleShape shape;
-	  sf::Font* font;
-	  sf::Text text;
-	  sf::Texture buttonTexture;
+	sf::RectangleShape shape;
+	sf::Font* font;
+	sf::Text text;
+	sf::Texture buttonTexture;
 
-	  sf::Color idleColor;
-	  sf::Color hoverColor;
-	  sf::Color activeColor;
+	sf::Color idleColor;
+	sf::Color hoverColor;
+	sf::Color activeColor;
 
-  public:
-	  //Constructors & Destructors
-	  Button(float x, float y, float witdth, float height,
-		  sf::Font* font, std::string text, sf::Texture* buttonTexture,
-		  sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
+public:
+	//Constructors & Destructors
+	Button(float x, float y, float witdth, float height,
+		sf::Font* font, std::string text, sf::Texture* buttonTexture,
+		sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
 
-	  ~Button();
-	  
-	  //Functions
-	  const bool isPressed() const;
-	  void update(const sf::Vector2f mousePosition );
-	  void render(sf::RenderTarget* target);
+	~Button();
+
+	//Functions
+	const bool isPressed() const;
+	void update(const sf::Vector2f mousePosition);
+	void render(sf::RenderTarget& target);
 };

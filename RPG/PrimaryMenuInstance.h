@@ -6,32 +6,32 @@ class PrimaryMenuInstance :
 	public Instance
 {
 
-  private:
-	  //Variables
-	  sf::Texture backgroundTexture;
-	  sf::Texture buttonTexture;
-	  sf::RectangleShape background;
-	  sf::Font font;
+private:
 
-	  std::map<std::string, Button*> buttons;
+	//Variables
+	sf::Texture backgroundTexture;
+	sf::Texture buttonTexture;
+	sf::RectangleShape background;
+	sf::Font font;
 
-	  // Private Functions
-	  void initVariables();
-	  void initBackground();
-	  void InitFonts();
-	  void initKeybinds();
-	  void initButtons();
+	std::map<std::string, Button*> buttons;
 
-  public:
-	  //Constructors & Destructors
-	  PrimaryMenuInstance(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Instance*>* instances);
-	  virtual ~PrimaryMenuInstance();
+	// Private Functions
+	void initVariables();
+	void initBackground();
+	void InitFonts();
+	void initKeybinds();
+	void initButtons();
 
-	  //Functions
-	  void updateInput(const float& dt);
-	  void updateButtons();
-	  void update(const float& dt);
-	  void renderButtons(sf::RenderTarget* target = nullptr);
-	  void render(sf::RenderTarget* target = nullptr);
+public:
+	//Constructors & Destructors
+	PrimaryMenuInstance(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys, std::stack<Instance*>* instances);
+	virtual ~PrimaryMenuInstance();
+
+	//Functions
+	void updateInput(const float& dt);
+	void updateButtons();
+	void update(const float& dt);
+	void renderButtons(sf::RenderTarget& target);
+	void render(sf::RenderTarget* target = nullptr);
 };
-

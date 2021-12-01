@@ -9,8 +9,8 @@ void Player::initVariables()
 
 void Player::initComponents()
 {
-	this->creatMovementComponent(70.f, 35.f, 15.f);
-} 
+
+}
 
 /*
 ----------Constructors & Destructors----------
@@ -18,11 +18,13 @@ void Player::initComponents()
 Player::Player(float x, float y, sf::Texture& textureSheet)
 {
 	this->initVariables();
-
 	this->setPosition(x, y);
-
-	this->creatMovementComponent(85.f, 40.f, 30.f);
+	this->creatMovementComponent(60.f, 30.f, 20.f);
 	this->creatAnimationComponent(textureSheet);
+	this->playerHitbox = &this->creatHitboxComponent(this->sprite, 16.f, 32.f);
+	this->playerSize = getSize();
+
+
 	//TODO CHECK DECELERATING FUNCTION
 
 	this->animationComponent->addAnimation("IDLE", 30.f, 0, 0, 3, 0, 16, 32); // TODO ADD THE IDLE CHECK WITH THE IDLE FUNCTION
@@ -42,13 +44,51 @@ Player::~Player()
 */
 sf::Vector2f Player::getPlayerPos()
 {
-	return playerPos;
+	return this->playerPos;
 }
+
+sf::Vector2f Player::getPlayerSize()
+{
+	return this->playerSize;
+}
+
+sf::Vector2f & Player::getTopLeftCord()
+{
+	return this->topLeftCord;
+}
+
+sf::Vector2f & Player::getTopRightCord()
+{
+	return this->topRightCord;
+}
+
+sf::Vector2f & Player::getBottomLeftCord()
+{
+	return this->bottomLeftCord;
+}
+
+sf::Vector2f & Player::getBottomRightCord()
+{
+	return this->bottomRightCord;
+}
+
 
 void Player::update(const float & dt)
 {
-	playerPos = updatePosSprite(dt); // Print the position before the movement & Aux the camera view
+	
+
 	this->movementComponent->update(dt);
+	this->playerPos = updatePosSprite(dt); // Print the position before the movement & Aux the camera view VE DEPOIS SE DEU CRTO
+
+	this->hitboxComponent->update();
+
+	this->topRightCord = updHitboxTopRightCord(dt);
+	this->topLeftCord = updHitboxTopLeftCord(dt);
+	this->bottomRightCord = updHitboxBottomRightCord(dt);
+	this->bottomLeftCord = updHitboxBottomLeftCord(dt);
+
+
+
 
 	/*0 -> IDLE
 	  1 -> MOVING DOWN
@@ -74,7 +114,7 @@ void Player::update(const float & dt)
 		this->animationComponent->play("WALKING UP", dt);
 	}
 	else if (this->movementComponent->getDirectionCharMov() == 4)
-	{	
+	{
 		this->animationComponent->play("WALKING LEFT", dt);
 	}
 }

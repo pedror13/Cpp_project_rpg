@@ -1,4 +1,4 @@
- #include "PrimaryMenuInstance.h"
+#include "PrimaryMenuInstance.h"
 
 /*
 ----------Private Functions----------
@@ -20,7 +20,7 @@ void PrimaryMenuInstance::initBackground()
 			static_cast<float>(this->window->getSize().x),
 			static_cast<float>(this->window->getSize().y)
 		)
-	);	
+	);
 	if (!this->backgroundTexture.loadFromFile("Resources/Images/Backgrounds/PramaryMenuBackground.jpg"))
 	{
 		throw "ERROR::MENU_INSTANCE::FAILED_TO_LOAD_BACKGROUND_IMAGE"; // TODO CHANGE IT TO INITVARIABLES
@@ -30,7 +30,7 @@ void PrimaryMenuInstance::initBackground()
 
 void PrimaryMenuInstance::InitFonts()
 {
-	if (!this->font.loadFromFile("Fonts/lastfontwastingonyou.ttf"))
+	if (!this->font.loadFromFile("Resources/Fonts/lastfontwastingonyou.ttf"))
 	{
 		throw("ERROR::PrimaryMenuInstance::COULD NOT LOAD FONT");
 	}
@@ -52,7 +52,7 @@ void PrimaryMenuInstance::initButtons()
 	this->buttons["Continue"] = new Button(520, 165, 192, 56,
 		&this->font, "Continue", &this->buttonTexture,
 		sf::Color::Blue, sf::Color::Red, sf::Color::Transparent);
-	
+
 	this->buttons["Credits"] = new Button(520, 250, 192, 56,
 		&this->font, "Credits", &this->buttonTexture,
 		sf::Color::Blue, sf::Color::Red, sf::Color::Transparent);
@@ -124,11 +124,11 @@ void PrimaryMenuInstance::update(const float& dt)
 	//system("cls");
 	//Debug stuff
 	//std::cout << "x: " << this->mousePositionView.x 
-		      //<< ", y = " << this->mousePositionView.y << std::endl; //TODO REMOVE LATER ( DEBUG )
+			  //<< ", y = " << this->mousePositionView.y << std::endl; //TODO REMOVE LATER ( DEBUG )
 
 }
 
-void PrimaryMenuInstance::renderButtons(sf::RenderTarget * target)
+void PrimaryMenuInstance::renderButtons(sf::RenderTarget& target)
 {
 	for (auto &it : this->buttons)
 	{
@@ -143,7 +143,7 @@ void PrimaryMenuInstance::render(sf::RenderTarget* target)
 		target = this->window;
 	}
 	target->draw(this->background);
-	this->renderButtons(target);
+	this->renderButtons(*target);
 
 	// TODO REMOVE LATER ( DEBUG )
 	sf::Text mouseText;
